@@ -7,11 +7,14 @@ import Category from './Page/Category/Category';
 import Blog from './Page/Bolg/Blog';
 import SignUp from './Page/SignUp/SignUp';
 import Login from './Page/Login/Login';
+import Error from './Page/error/Error';
+import ItemsOfBike from './Page/ItemsOfBike/ItemsOfBike';
 function App() {
   const router = createBrowserRouter([
     {
       path:'/',
       element: <Main></Main>,
+      errorElement:<Error></Error>,
       children: [
         {
             path:'/home',
@@ -32,6 +35,11 @@ function App() {
         {
             path:'/login',
             element:<Login></Login>
+        },
+        {
+            path:'/items/:id',
+            element:<ItemsOfBike></ItemsOfBike>,
+            loader: ({params}) => fetch(`http://localhost:5000/items/${params.id}`)
         },
 
       
