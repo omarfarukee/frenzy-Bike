@@ -9,6 +9,8 @@ import SignUp from './Page/SignUp/SignUp';
 import Login from './Page/Login/Login';
 import Error from './Page/error/Error';
 import ItemsOfBike from './Page/ItemsOfBike/ItemsOfBike';
+import PrivateRoute from './Page/Private/PrivateRoute';
+import BikeBorard from './Layout/BikeBoard/BikeBorard';
 function App() {
   const router = createBrowserRouter([
     {
@@ -38,11 +40,20 @@ function App() {
         },
         {
             path:'/items/:id',
-            element:<ItemsOfBike></ItemsOfBike>,
+            element:<PrivateRoute><ItemsOfBike></ItemsOfBike></PrivateRoute>,
             loader: ({params}) => fetch(`http://localhost:5000/items/${params.id}`)
         },
 
       
+      ]
+    },
+    {
+      path:'/dashBoard',
+      element:<BikeBorard></BikeBorard>,
+      children: [
+        {
+          
+        }
       ]
     }
   ])

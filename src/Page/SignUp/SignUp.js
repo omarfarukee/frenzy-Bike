@@ -12,14 +12,12 @@ const SignUp = () => {
     const [createdUserEmail, setCreatedUserEmail] = useState('')
     // const [token] = useToken(createdUserEmail);
     const navigate = useNavigate()
-
     const handleGoogle= () => {
         signInWithGoogle()
             .then(result => {
                 const user = result.user;
                 console.log(user);
                 toast.success('User Sign Up SuccessFully')
-                // navigate(from, {replace: true});
                 navigate('/home')
             })
             .catch(error => {

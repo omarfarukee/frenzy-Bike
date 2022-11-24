@@ -9,10 +9,10 @@ const Login = () => {
     const {login, signInWithGoogle, user } = useContext(AuthContext)
     const [loginUserEmail, setLoginUerEmail] = useState('');
     // const [token] = useToken(loginUserEmail);
-    
-     const navigate = useNavigate()
-    // const location = useLocation();
+    const navigate = useNavigate()
+    const location = useLocation();
 
+    const from = location.state?.from?.pathname || '/'
 
     const handleLogin = data =>{
         console.log(data)
@@ -36,7 +36,7 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 toast.success('User Login Successfully')
-                // navigate(from, {replace: true});
+                 navigate(from, {replace: true});
                 navigate('/home')
             })
             .catch(error => {
