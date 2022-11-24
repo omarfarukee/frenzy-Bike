@@ -77,7 +77,7 @@ const Login = () => {
                     </div>
                  
                    <div className="divider">OR</div>
-                   <button onClick={handleGoogle} className='btn btn-primary w-full'>Continue with Google</button>
+                   <button onClick={handleGoogle} className='btn btn-primary w-full'>Login Google</button>
                 </form>
             </div>
         </div>

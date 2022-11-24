@@ -80,7 +80,7 @@ const SignUp = () => {
                 {error && <p className='text-red-600'>{error}</p>}
             </form>
             <div className='flex justify-center'>
-                  <p>Already have an account ?<Link className='text-blue-500' to="/login">Please Login</Link></p>
+                  <p>Already have an account ?<Link className='text-blue-500' to='/login'>Please Login</Link></p>
             </div>
           
             <div className="divider">OR</div>

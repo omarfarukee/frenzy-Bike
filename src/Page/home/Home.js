@@ -2,6 +2,7 @@ import React from 'react';
 import pic1 from '../../images/1433024.webp'
 import pic2 from '../../images/motorbike (1).jpg'
 import pic3 from '../../images/racer-motorbike.jpg'
+import ThreeItems from '../ThreeItmes/ThreeItems';
 import './Home.css'
 const Home = () => {
     return (
@@ -76,6 +77,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+            <ThreeItems></ThreeItems>
         </div>
     );
 };

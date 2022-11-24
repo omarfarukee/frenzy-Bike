@@ -1,0 +1,139 @@
+[
+    {
+        
+    "itemName":"Yamaha Collection",
+    "image":"https://i.pinimg.com/474x/8d/62/d5/8d62d501f87d548a6c4529c191496885--yamaha-yzf-r-yamaha-bikes.jpg",
+    "products": [
+        {
+            "name": "Yamaha R15",
+            "images":"https://www.tbsnews.net/sites/default/files/styles/big_2/public/images/2022/09/21/lead_1._suzuki_gsx_2_2.jpg",
+            "resalePrice":200000,
+            "originalPrice":350000,
+            "location":"Uttora, sector-9",
+            "condition":"Excellent",
+            "yearOfUse":0.8,
+            "seller":"rider girl marzia",
+            "postTime":"10/11/2022, 11.00 am",
+            "details":"Engin: 200 cc (liq-cooled), Top Spe: 150 Kmph (approx), Mileag: 40 Kmpl (average)"
+        },
+        {
+            "name": "R14 yamaha",
+            "images":"https://imgd.aeplcdn.com/476x268/bw/models/yamaha-xsr155-standard20190819142450.jpg",
+            "resalePrice":180000,
+            "originalPrice":250000,
+            "location":"Tongi",
+            "condition":"Excellent",
+            "yearOfUse":2,
+            "seller":"keblu khan ",
+            "postTime":"1/11/2022, 2.30 pm",
+            "details":"Engin: 200 cc (liq-cooled), Top Spe: 150 Kmph (approx), Mileag: 40 Kmpl (average)"
+        },
+        {
+            "name": "Yeamaha fnx-20",
+            "images":"https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/ExtraImages/20221018120157_Yamaha%20Oct%20price%20hike.jpg&w=700&q=90&c=1",
+            "resalePrice":10000,
+            "originalPrice":150000,
+            "location":"mirmpur-14",
+            "condition":"Excellent",
+            "yearOfUse":1.5,
+            "seller":"shohan hasan",
+            "postTime":"5/11/2022, 3.50 pm",
+            "details":"Engin: 120 cc (liq-cooled), Top Spe: 120 Kmph (approx), Mileag: 30 Kmpl (average)"
+        }
+        
+    ]
+
+    },
+
+
+    {
+        
+    "itemName":"Suzuki Collection",
+    "image":"https://mmemotorcycles.co.uk/wp-content/uploads/suzuki-GSX1300R-Hayabusa-black-2-500x333.jpg",
+    "products": [
+        {
+            "name": "suzuki fz",
+            "images":"https://financialexpresswpcontent.s3.amazonaws.com/uploads/2020/07/Yamaha-fz25-green-3qtr-660.jpg",
+            "resalePrice":300000,
+            "originalPrice":420000,
+            "location":"Dhaka, azipmur",
+            "condition":"ver Good",
+            "yearOfUse":0.2,
+            "seller":"jamil ahmed",
+            "postTime":"5/11/2022, 3.10 pm",
+            "details":"Engin: 200 cc (liq-cooled), Top Spe: 150 Kmph (approx), Mileag: 40 Kmpl (average)"
+        },
+        {
+            "name": "suzuki 75-1",
+            "images":"http://productreviewbd.com/wp-content/uploads/2017/11/%E0%A6%B8%E0%A7%81%E0%A6%9C%E0%A7%81%E0%A6%95%E0%A6%BF-%E0%A6%9C%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A6%BE%E0%A6%B0-%E0%A6%8F%E0%A6%B8%E0%A6%8F%E0%A6%AB-%E0%A6%8F%E0%A6%AB%E0%A6%86%E0%A6%87-Suzuki-Gixxer-SF-Fi%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A6%AB%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%B8-%E0%A6%B0%E0%A6%BF%E0%A6%AD%E0%A6%BF%E0%A6%89.jpg",
+            "resalePrice":200000,
+            "originalPrice":180000,
+            "location":"Gazipur, maowna",
+            "condition":"Excellent",
+            "yearOfUse":1.8,
+            "seller":"jamil ahmed",
+            "postTime":"20/10/2022, 5.30 pm",
+            "details":"Engin: 180 cc (liq-cooled), Top Spe: 180 Kmph (approx), Mileag: 50 Kmpl (average)"
+        },
+        {
+            "name": "suzuki f20",
+            "images":"https://www.bikevaly.com/assets/img/bn-suzuki-gixxer-155.webp",
+            "resalePrice":300000,
+            "originalPrice":420000,
+            "location":"Banani",
+            "condition":"ver Good",
+            "yearOfUse":1,
+            "seller":"Khabib khan",
+            "postTime":"02/11/2022, 10.10px pm",
+            "details":"Engin: 200 cc (liq-cooled), Top Spe: 150 Kmph (approx), Mileag: 40 Kmpl (average)"
+        }
+    ]
+    },
+
+
+
+    {
+        
+    "itemName":"TVS Collection",
+    "image":"https://bd.gaadicdn.com/processedimages/tvs/raider/640X309/raider61559fb6bcce8.jpg?tr=w-360",
+    "products": [
+        {
+            "name": "tvs R15",
+            "images":"https://upload.wikimedia.org/wikipedia/commons/a/ad/The_Apache_RTR_180_V2.jpg",
+            "resalePrice":200000,
+            "originalPrice":150000,
+            "location":"Gzipura, Rakiber babir niche",
+            "condition":"very good",
+            "yearOfUse":1,
+            "seller":"khalid hasan",
+            "postTime":"30/10/2022, 10:30pm",
+            "details":"Engin: 150 cc (liq-cooled), Top Spe: 140 Kmph (approx), Mileag: 37 Kmpl (average)"
+        },
+        {
+            "name": "tvs 250",
+            "images":"https://assets.telegraphindia.com/abp/2019/7/15/1606343313_5fbeda91908a0_tvs-rtr-200-fi-e100-motorcycle.png",
+            "resalePrice":250000,
+            "originalPrice":210000,
+            "location":"Gzipura,tongi",
+            "condition":"Good",
+            "yearOfUse":1.2,
+            "seller":"hero alom",
+            "postTime":"25/10/2022, 12:30pm",
+            "details":"Engin: 140 cc (liq-cooled), Top Spe: 120 Kmph (approx), Mileag: 36 Kmpl (average)"
+        },
+        {
+            "name": "tvs 350",
+            "images":"https://imgcdn.oto.com/medium/gallery/exterior/81/1800/tvs-apache-rtr-200-4v-marketing-image-257065.jpg",
+            "resalePrice":300000,
+            "originalPrice":250000,
+            "location":"uttara, sector-6",
+            "condition":"Excellent",
+            "yearOfUse":0.8,
+            "seller":"Shawon ahmed",
+            "postTime":"10/10/2022, 3:30pm",
+            "details":"Engin: 150 cc (liq-cooled), Top Spe: 140 Kmph (approx), Mileag: 40 Kmpl (average)"
+        }
+    ]
+
+    }
+]
