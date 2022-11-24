@@ -1,0 +1,80 @@
+.back-img:after{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    border-radius: 12px;
+    display: inline-block;
+    background: linear-gradient( rgba(0,0,0,0.50), rgba(0,0,0,0.50) );
+}
+.slides img{
+    height: 100%;
+}
+@media only screen  and (max-width: 687px){
+
+    .slides img{
+        height: 100%;
+    }
+    .text-t{
+        font-size:20px;
+        text-align:center;
+    }
+    .text-p{
+        font-size:12px;
+    }
+   
+    .reg-btn{
+        display:none;
+    }
+    .log-btn{
+        margin-bottom: 5px;
+    }
+    .log-out{
+        width:50px;
+        font-size:10px;
+    }
+
+    /* for section One */
+    .sec-pic{
+        width: 96%;
+        margin-left:10px;
+    }
+    .sec-p{
+        margin-top:40px;
+        width: 95%;
+        margin-left:10px;
+        margin-right:5px;
+    }
+    .card-food{
+        width:95%;
+    }
+    /* home.js */
+    .h-img{
+        height:45px;
+        margin-top:8px;
+    }
+    .h-food{
+        font-size:12px;
+        margin-right:10px;
+        margin-top:10px;
+    }
+    .h-u-img{
+        height:35px;
+        border-radius: 50%;
+    }
+
+    /*  viewAllfood.js */
+    .viewFood{
+        width: 100%;
+    }
+    /* viewCard.js */
+    .n-card{
+        width:95%;
+    }
+
+    .sec2-img{
+        margin-right:30px;
+    }
+}
