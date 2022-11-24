@@ -4,6 +4,7 @@ import pic2 from '../../images/motorbike (1).jpg'
 import pic3 from '../../images/racer-motorbike.jpg'
 import ThreeItems from '../ThreeItmes/ThreeItems';
 import './Home.css'
+import Section from './section/Section';
 const Home = () => {
     return (
         <div>
@@ -78,6 +79,11 @@ const Home = () => {
                 </div>
             </div>
             <ThreeItems></ThreeItems>
+            <div className='mt-5 flex justify-center'>
+                 <h1 className='text-green-700 font-bold text-3xl'>Extra info</h1>
+            </div>
+           
+            <Section></Section>
         </div>
     );
 };
