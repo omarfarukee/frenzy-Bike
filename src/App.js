@@ -11,6 +11,8 @@ import Error from './Page/error/Error';
 import ItemsOfBike from './Page/ItemsOfBike/ItemsOfBike';
 import PrivateRoute from './Page/Private/PrivateRoute';
 import BikeBorard from './Layout/BikeBoard/BikeBorard';
+import MyOrder from './Page/MyOrder/MyOrder';
+import AddItems from './Page/AddItems/AddItems';
 function App() {
   const router = createBrowserRouter([
     {
@@ -52,8 +54,13 @@ function App() {
       element:<BikeBorard></BikeBorard>,
       children: [
         {
-          
-        }
+          path:'/dashBoard/myOrder',
+          element:<MyOrder></MyOrder>
+        },
+        {
+          path:'/dashBoard/addItem',
+          element:<AddItems></AddItems>
+        },
       ]
     }
   ])

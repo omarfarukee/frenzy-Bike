@@ -6,6 +6,7 @@ import { AuthContext } from '../AuthProviuder/AuthProvider';
 import { signInWithPopup } from 'firebase/auth';
 
 const SignUp = () => {
+
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { signUp, updateUser, signInWithGoogle} = useContext(AuthContext);
     const [error, setError] = useState('');
@@ -36,7 +37,7 @@ const SignUp = () => {
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        // saveUser(data.name, data.email);
+                    saveUser(data.name, data.email);
                        
                     })
                     .catch(err => console.log(err));
@@ -46,6 +47,23 @@ const SignUp = () => {
                 setError(error.message)
             });
     }
+
+    const saveUser = (name, email) =>{
+        const user = {name, email};
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data =>{
+            // console.log('save user',data)
+            setCreatedUserEmail(email)
+         })
+        
+     }
     return (
         <div className='h-[800px] flex justify-center items-center'>
         <div className='w-96 p-7'>
@@ -73,7 +91,14 @@ const SignUp = () => {
                         // pattern: { value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/, message: 'Password must have uppercase, number and special characters' }
                     })} className="input input-bordered w-full max-w-xs" />
                     {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
-                </div>
+                </div> 
+                <div className='mt-4'>
+                        <label className="label"> <span className="label-text">Choose Your Role</span></label>
+                        <select className="select select-bordered  w-full max-w-xs" {...register("role")}>
+                            <option value="buyer">buyer</option>
+                            <option value="seller">seller</option>
+                        </select>
+                    </div>
                 <input className='btn btn-accent w-full mt-4' value="Sign Up" type="submit" />
                 {error && <p className='text-red-600'>{error}</p>}
             </form>

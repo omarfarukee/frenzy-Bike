@@ -19,7 +19,8 @@ const ModalItemsBooks = ({setItemsData, itemsData}) => {
             phone,
             location,
             buyerName: user.displayName,
-            image:images
+            image:images,
+            price: resalePrice,
 
         }
 
