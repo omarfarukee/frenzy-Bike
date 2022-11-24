@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom'
+import ModalItemsBooks from '../ModalItemsBook/ModalItemsBooks';
 import CardOfItemBike from './CardOfItemBike';
 const ItemsOfBike = () => {
     const detailsOfItemsCard = useLoaderData()
-
+    const [itemsData, setItemsData] = useState(null)
     console.log(detailsOfItemsCard)
 
     return (
@@ -16,9 +17,17 @@ const ItemsOfBike = () => {
                     detailsOfItemsCard.map(itemsCard => <CardOfItemBike
                         key={itemsCard._id}
                         itemsCard={itemsCard}
+                        setItemsData={setItemsData}
                     ></CardOfItemBike>)
                 }
             </div>
+            {
+                itemsData && 
+                <ModalItemsBooks
+                itemsData={itemsData}
+                setItemsData={setItemsData}
+                ></ModalItemsBooks>
+            }
         </div>
     );
 };

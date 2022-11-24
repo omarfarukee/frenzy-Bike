@@ -1,7 +1,7 @@
 import React from 'react';
 
-const CardOfItemBike = ({ itemsCard }) => {
-    const { name, images, location, resalePrice, originalPrice, condition, details, yearOfUse, postTime, seller } = itemsCard
+const CardOfItemBike = ({ itemsCard, setItemsData }) => {
+    const { name,phone, images, location, resalePrice, originalPrice, condition, details, yearOfUse, postTime, seller } = itemsCard
 
     return (
         <div>
@@ -15,10 +15,11 @@ const CardOfItemBike = ({ itemsCard }) => {
                     <p> <span className='font-bold'>Year of use : </span> {yearOfUse}years</p>
                     <p> <span className='font-bold'>Condition: </span> {condition}</p>
                     <p> <span className='font-bold'>Location: </span> {location}</p>
+                    <p> <span className='font-bold'>Phone: </span> {phone}</p>
                     <p> <span className='font-bold'> Short Details :</span> {details}</p>
                     <p> <span className='font-bold'>Post Date:</span> {postTime}</p>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Buy Now</button>
+                    <label  onClick={() => setItemsData(itemsCard)} htmlFor="item-modal" className="btn btn-primary" >Book now</label> 
                     </div>
                 </div>
             </div>
