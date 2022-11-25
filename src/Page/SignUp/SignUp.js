@@ -10,7 +10,7 @@ const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { signUp, updateUser, signInWithGoogle} = useContext(AuthContext);
     const [error, setError] = useState('');
-    const [createdUserEmail, setCreatedUserEmail] = useState('')
+    // const [createdUserEmail, setCreatedUserEmail] = useState('')
     // const [token] = useToken(createdUserEmail);
     const navigate = useNavigate()
     const handleGoogle= () => {
@@ -60,9 +60,20 @@ const SignUp = () => {
         .then(res => res.json())
         .then(data =>{
             // console.log('save user',data)
-            setCreatedUserEmail(email)
+            getUsersToken(email)
          })
         
+     }
+
+     const getUsersToken = (email) => {
+        fetch(`http://localhost:5000/jwt?email=${email}`)
+        .then(res => res.json())
+        .then(data => {
+            if(data.accessToken){
+                localStorage.setItem('usersToken', data.accessToken)
+                navigate('/')
+            }
+        })
      }
     return (
         <div className='h-[800px] flex justify-center items-center'>
