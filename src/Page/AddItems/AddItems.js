@@ -1,18 +1,76 @@
 import { data } from 'autoprefixer';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const AddItems = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const imageHosKey = '29473dd4ab78ebc95009722bc0558d38';
+    console.log(imageHosKey)
+    // const navigate = useNavigate()
 
     const handleAddItem = (data) => {
         console.log(data)
-    }
 
+        const image = data.images[0];
+        const fromData = new FormData();
+        fromData.append('image', image);
+
+        const url= `https://api.imgbb.com/1/upload?expiration=600&key=${imageHosKey}` 
+        console.log(url)
+        fetch(url, {
+            method: 'POST',
+            body: fromData
+        })
+        .then(res => res.json()) 
+        .then(imgData => {
+          if(imgData.success){
+            console.log(imgData.data.url)
+
+
+            const item = {
+                name : data.name ,
+                categoryId: data.categoryId,
+                images: imgData.data.url,
+                resalePrice: data.resalePrice,
+                originalPrice: data.originalPrice,
+                location: data.location,
+                condition: data.condition,
+                yearOfUs:data.yearOfUSe,
+                seller:data.seller,
+                postTime:data.postTime,
+                details: data.details,
+                phone:data.details
+
+            }
+
+          
+            fetch('http://localhost:5000/items', {
+
+                method: 'POST', 
+                headers: {
+                    'content-type': 'application/json', 
+                    authorization : `bearer ${localStorage.getItem('usersToken')}`
+
+                }, 
+                body: JSON.stringify(item)
+            })
+            .then(res => res.json())
+            .then(result => {
+                
+                console.log(result)
+                toast.success('added Item successfully')
+                // navigate('/dashboard/')
+            })
+
+          }
+        })
+    }
     return (
 
         <div className='pr-5'>
-            <h1>Add itemsssssssss</h1>
+            <div className='flex justify-center text-3xl font-bold'><h1>Add item</h1></div>
             <form onSubmit={handleSubmit(handleAddItem)}>
 
                 <div className='grid grid-cols-2 bg-gray-300 p-5 rounded-2xl '>
