@@ -28,7 +28,7 @@ const MyOrder = () => {
                         <tr>
                             <th></th>
                             <th>Product</th>
-                            <th>Product Name</th>
+                            <th>Model Name</th>
                             <th>Price</th>
                             <th>Payment Status</th>
                         </tr>
@@ -39,10 +39,10 @@ const MyOrder = () => {
                             bookedItem?.map((booked, index) =>
                                 <tr key={booked._id}>
                                     <th>{index + 1}</th>
-                                    <img alt='' className="mask mask-squircle" src={booked.image} />
+                                   <th><img alt='' className="mask mask-circle h-24 " src={booked.image} /></th> 
                                     <td>{booked.modelName}</td>
-                                    <td>{booked.sal}</td>
-                                    <button className='btn btn-danger'>pay</button>
+                                    <td>{booked.price}৳</td>
+                                   <td><button className='btn btn-danger'>pay</button></td> 
                                 </tr>
                             )
                         }
