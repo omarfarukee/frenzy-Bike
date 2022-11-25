@@ -4,15 +4,21 @@ import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../AuthProviuder/AuthProvider';
 import { signInWithPopup } from 'firebase/auth';
+import useToken from '../../UserHooks/UseToken';
 
 const SignUp = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { signUp, updateUser, signInWithGoogle} = useContext(AuthContext);
     const [error, setError] = useState('');
-    // const [createdUserEmail, setCreatedUserEmail] = useState('')
-    // const [token] = useToken(createdUserEmail);
+    const [userEmail, setUserEmail] = useState('')
+     const [token] = useToken(userEmail);
     const navigate = useNavigate()
+    
+    if(token){
+        navigate('/')
+    }
+
     const handleGoogle= () => {
         signInWithGoogle()
             .then(result => {
@@ -60,21 +66,21 @@ const SignUp = () => {
         .then(res => res.json())
         .then(data =>{
             // console.log('save user',data)
-            getUsersToken(email)
+            setUserEmail(email)
          })
         
      }
 
-     const getUsersToken = (email) => {
-        fetch(`http://localhost:5000/jwt?email=${email}`)
-        .then(res => res.json())
-        .then(data => {
-            if(data.accessToken){
-                localStorage.setItem('usersToken', data.accessToken)
-                navigate('/')
-            }
-        })
-     }
+    //  const getUsersToken = (email) => {
+    //     fetch(`http://localhost:5000/jwt?email=${email}`)
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         if(data.accessToken){
+    //             localStorage.setItem('usersToken', data.accessToken)
+    //             navigate('/home')
+    //         }
+    //     })
+    //  }
     return (
         <div className='h-[800px] flex justify-center items-center'>
         <div className='w-96 p-7'>

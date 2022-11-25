@@ -12,7 +12,7 @@ const MyOrder = () => {
 
             const res = await fetch(url, {
                 headers: {
-                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                    authorization: `bearer ${localStorage.getItem('usersToken')}`
                 }
             });
             const data = await res.json();
@@ -21,7 +21,10 @@ const MyOrder = () => {
     })
     return (
         <div>
-            <h1 className='text-3xl'>Dash Board</h1>
+            <div className='flex justify-center mb-5 mt-5'>
+                    <h1 className='text-3xl'>Order Board</h1>
+            </div>
+        
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
@@ -36,7 +39,7 @@ const MyOrder = () => {
                     <tbody>
 
                         {
-                            bookedItem?.map((booked, index) =>
+                          bookedItem?.length && bookedItem?.map((booked, index) =>
                                 <tr key={booked._id}>
                                     <th>{index + 1}</th>
                                    <th><img alt='' className="mask mask-circle h-24 " src={booked.image} /></th> 

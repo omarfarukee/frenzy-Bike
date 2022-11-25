@@ -21,6 +21,10 @@ function App() {
       errorElement:<Error></Error>,
       children: [
         {
+            path:'/',
+            element:<Home></Home>
+        },
+        {
             path:'/home',
             element:<Home></Home>
         },
