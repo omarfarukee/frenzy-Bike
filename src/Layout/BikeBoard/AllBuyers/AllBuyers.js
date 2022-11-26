@@ -14,7 +14,7 @@ const AllBuyers = () => {
     });
 
     const handleDeleteBuyers = id =>{
-        const proceed = window.confirm('Are you sure, want to delete this Seller?')
+        const proceed = window.confirm('Are you sure, want to delete this Buyer?')
         if(proceed){
             fetch( `http://localhost:5000/users/allBuyers/${id}`, {
                 method: 'DELETE'
@@ -23,7 +23,7 @@ const AllBuyers = () => {
             .then(data => {
                 console.log(data)
                 if(data.deletedCount > 0) {
-                    toast.success('Seller Deleted Successfully')
+                    toast.success('Buyer Deleted Successfully')
                     const remaining = buyers.filter(buy => buy._id !== id)
                     setBuyers(remaining)
                     refetch()
