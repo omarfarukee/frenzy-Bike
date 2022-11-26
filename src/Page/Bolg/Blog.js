@@ -31,7 +31,7 @@ const Blog = () => {
             </p>
         </div>
         <div className='qus'>
-            <h3>Q := How does NodeJS handle multiple requests at the same time?</h3>
+            <h3>Q := What's the difference between React vs. Angular vs. Vue?</h3>
             <p>A:= react- <br />
             React can be used as a UI library to render elements, without enforcing a specific project structure, and that’s why it’s not strictly a framework.React Elements are the smallest building blocks of React apps. They are more powerful than DOM elements because the React DOM makes sure to update them efficiently whenever something changes.Components are larger building blocks that define independent and reusable pieces to be used throughout the application. They accept inputs called props and produce elements that are then displayed to the user.React is based on JavaScript, but it’s mostly combined with JSX (JavaScript XML), a syntax extension that allows you to create elements that contain HTML and JavaScript at the same time.Anything you create with JSX could also be created with the React JavaScript API, but most developers prefer JSX because it’s more intuitive , <br />
             Vue - <br />

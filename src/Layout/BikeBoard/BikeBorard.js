@@ -39,19 +39,19 @@ console.log(userRole)
 
                 {userRole === "admin"? 
                         <>  
-                            <p className='text-2xl font-bold text-green-900'>Admin Profile</p>
+                            <p className='text-2xl font-bold text-green-900 mb-5 ml-3'>Admin Profile</p>
                             {/* <li><Link to='/dashboard/addItem'>Add Item</Link></li> */}
-                            <li><Link to='/dashboard/allBuyers'>All Buyers</Link></li>
-                            <li><Link to='/dashboard/allSellers'>All Sellers</Link></li>
+                            <li className='bg-green-700 hover:bg-green-500 rounded-2xl mb-3 text-white font-bold'><Link to='/dashboard/allBuyers'>All Buyers</Link></li>
+                            <li className='bg-green-700 hover:bg-green-500 rounded-2xl mb-3 text-white font-bold'><Link to='/dashboard/allSellers'>All Sellers</Link></li>
                         </> 
                         : 
                         <></>
                 } 
                 {userRole === 'seller' ?
                 <>
-                    <p className='text-2xl font-bold text-green-900'>Seller Profile</p>
-                    <li><Link to='/dashboard/addItem'>Add Item</Link></li>
-                    <li><Link to='/dashboard/myProducts'>My Added Products</Link></li>
+                    <p className='text-2xl font-bold text-green-900 b-5 ml-3'>Seller Profile</p>
+                    <li className='bg-green-700 hover:bg-green-500 rounded-2xl mb-3 text-white font-bold'><Link to='/dashboard/addItem'>Add Item</Link></li>
+                    <li className='bg-green-700 hover:bg-green-500 rounded-2xl mb-3 text-white font-bold'><Link to='/dashboard/myProducts'>My Added Products</Link></li>
                 </>
                 :<></>
                 }
@@ -59,8 +59,8 @@ console.log(userRole)
                 {userRole === "buyer" ?
 
                         <>
-                            <p className='text-2xl font-bold text-green-900'>Buyer Profile</p>
-                            <li><Link to='/dashboard/myOrder'>My Ordered Items</Link></li>
+                            <p className='text-2xl font-bold text-green-900 b-5 ml-3 mb-5'>Buyer Profile</p>
+                            <li className='bg-green-700 hover:bg-green-500 rounded-2xl mb-3 text-white font-bold'><Link to='/dashboard/myOrder'>My Ordered Items</Link></li>
                          </>
                         : 
                         <></>
@@ -72,7 +72,7 @@ console.log(userRole)
 
     </div>
 
-            {/* <Footer></Footer> */}
+            <Footer></Footer>
         </div>
     );
 };

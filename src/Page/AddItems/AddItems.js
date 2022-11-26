@@ -8,7 +8,8 @@ import { AuthContext } from '../AuthProviuder/AuthProvider';
 const AddItems = () => {
     const {user} = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const imageHosKey = '29473dd4ab78ebc95009722bc0558d38';
+    // const imageHosKey = '29473dd4ab78ebc95009722bc0558d38';
+    const imageHosKey= process.env.REACT_APP_imgbb_key
     console.log(imageHosKey)
      const navigate = useNavigate()
 
@@ -19,7 +20,7 @@ const AddItems = () => {
         const fromData = new FormData();
         fromData.append('image', image);
 
-        const url= `https://api.imgbb.com/1/upload?expiration=600&key=${imageHosKey}` 
+        const url= `https://api.imgbb.com/1/upload?&key=${imageHosKey}` 
         console.log(url)
         fetch(url, {
             method: 'POST',

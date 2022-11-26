@@ -16,6 +16,7 @@ import AddItems from './Page/AddItems/AddItems';
 import MyProducts from './Page/AddItems/MyProducts/MyProducts';
 import AllSellers from './Layout/BikeBoard/AllSellers/AllSellers';
 import AllBuyers from './Layout/BikeBoard/AllBuyers/AllBuyers';
+import Greeting from './Layout/BikeBoard/Greeting/Greeting';
 function App() {
   const router = createBrowserRouter([
     {
@@ -63,6 +64,10 @@ function App() {
         {
           path:'/dashBoard/myOrder',
           element:<MyOrder></MyOrder>
+        },
+        {
+          path:'/dashBoard',
+          element:<Greeting></Greeting>
         },
         {
           path:'/dashBoard/addItem',

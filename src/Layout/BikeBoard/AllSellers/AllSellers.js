@@ -33,7 +33,10 @@ const AllSellers = () => {
 }
         return (
             <div>
-                <h2 className="text-3xl">All Users</h2>
+                <div className='flex justify-center'>
+                     <h2 className="text-3xl mt-5 mb-3 font-bold">All Sellers</h2>
+                </div>
+               
                 <div className="overflow-x-auto">
                     <table className="table w-full">
                         <thead>

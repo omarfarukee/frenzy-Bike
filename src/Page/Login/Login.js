@@ -35,13 +35,13 @@ const Login = () => {
     }
     const handleGoogle= () => {
         signInWithGoogle()
-        // console.log(signInPopUp)
             .then(result => {
                 const user = result.user;
                 console.log(user);
                 toast.success('User Login Successfully')
+                 navigate('/home')
                  navigate(from, {replace: true});
-                navigate('/home')
+               
             })
             .catch(error => {
                 console.log(error.message)
