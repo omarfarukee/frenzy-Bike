@@ -1,13 +1,16 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import pic from '../images/images-removebg-preview.png'
 import { AuthContext } from '../Page/AuthProviuder/AuthProvider';
 const Header = () => {
+  const navigate = useNavigate()
 const {user, logOut} = useContext(AuthContext)
+
   const handleLogOut = () => {
     logOut()
-      .then(() => { })
+      .then(() => {})
       .catch(error => console.error(error))
+    navigate('/')
   }
   const berItem = <React.Fragment>
     <p className='mt-3 font-bold'>{user?.email ? user.displayName : 'user not login'}</p>

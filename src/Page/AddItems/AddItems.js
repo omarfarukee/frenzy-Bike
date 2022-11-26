@@ -33,18 +33,19 @@ const AddItems = () => {
 
             const item = {
                 name : data.name ,
-                categoryId: data.categoryId,
+                email:user?.email,
                 images: imgData.data.url,
                 resalePrice: data.resalePrice,
                 originalPrice: data.originalPrice,
-                location: data.location,
+                categoryId: data.categoryId,
                 condition: data.condition,
                 yearOfUse:data.yearOfUse,
+                phone:data.details,
                 seller:data.seller,
                 postTime:data.postTime,
                 details: data.details,
-                phone:data.details,
-                email:user?.email
+                location: data.location,
+              
 
             }
 

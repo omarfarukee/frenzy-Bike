@@ -8,7 +8,7 @@ const MyProducts = () => {
     const [reviews, setReviews] = useState([])
     const url = `http://localhost:5000/dashboard/items?email=${user?.email}`
 
-    const { data: products = [] } = useQuery({
+    const { data: products = [], refetch } = useQuery({
         queryKey: ['dashboard/items', user?.email],
         queryFn: async () => {
 
@@ -24,7 +24,7 @@ const MyProducts = () => {
     // console.log(myProducts)
 
     const handleDelete = id =>{
-        const proceed = window.confirm('Are you sure, want to delete this review?')
+        const proceed = window.confirm('Are you sure, want to delete this Item?')
         if(proceed){
             fetch( `http://localhost:5000/dashboard/items/${id}`, {
                 method: 'DELETE'
@@ -36,6 +36,7 @@ const MyProducts = () => {
                     toast.success('Items Deleted Successfully')
                     const remaining = reviews.filter(rev => rev._id !== id)
                     setReviews(remaining)
+                    refetch()
                 }
             })
         }
