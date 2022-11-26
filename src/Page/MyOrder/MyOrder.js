@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../AuthProviuder/AuthProvider';
 
 const MyOrder = () => {
@@ -20,7 +21,7 @@ const MyOrder = () => {
         }
     })
 
-    
+
     return (
         <div>
             <div className='flex justify-center mb-5 mt-5'>
@@ -47,7 +48,18 @@ const MyOrder = () => {
                                    <th><img alt='' className="mask mask-circle h-24 " src={booked.image} /></th> 
                                     <td>{booked.modelName}</td>
                                     <td>{booked.price}৳</td>
-                                   <td><button className='btn btn-danger'>pay</button></td> 
+                                    {
+                                        booked.price && !booked.paid && 
+                                       <td> <Link to={`/dashboard/payments/${booked?._id}`}>
+                                        <button className='btn btn-danger'>pay</button>
+                                         </Link></td>
+                                        
+
+                                    }
+                                    {
+                                        booked.price && booked.paid &&  <td><button className='btn btn-primary'>paid</button></td> 
+                                    }
+                                  
                                 </tr>
                             )
                         }

@@ -69,6 +69,7 @@ const SignUp = () => {
         .then(data =>{
             // console.log('save user',data)
             setUserEmail(email)
+            // getUsersToken(email)
          })
         
      }
@@ -83,6 +84,7 @@ const SignUp = () => {
     //         }
     //     })
     //  }
+
     return (
         <div className='h-[800px] flex justify-center items-center'>
         <div className='w-96 p-7'>

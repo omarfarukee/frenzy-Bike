@@ -17,6 +17,7 @@ import MyProducts from './Page/AddItems/MyProducts/MyProducts';
 import AllSellers from './Layout/BikeBoard/AllSellers/AllSellers';
 import AllBuyers from './Layout/BikeBoard/AllBuyers/AllBuyers';
 import Greeting from './Layout/BikeBoard/Greeting/Greeting';
+import Payment from './Layout/BikeBoard/Payment/Payment';
 function App() {
   const router = createBrowserRouter([
     {
@@ -58,33 +59,38 @@ function App() {
       ]
     },
     {
-      path:'/dashBoard',
+      path:'/dashboard',
       element:<BikeBorard></BikeBorard>,
       children: [
         {
-          path:'/dashBoard/myOrder',
+          path:'/dashboard/myOrder',
           element:<MyOrder></MyOrder>
         },
         {
-          path:'/dashBoard',
+          path:'/dashboard',
           element:<Greeting></Greeting>
         },
         {
-          path:'/dashBoard/addItem',
+          path:'/dashboard/addItem',
           element:<AddItems></AddItems>
         },
         {
-          path:'/dashBoard/myProducts',
+          path:'/dashboard/myProducts',
           element:<MyProducts></MyProducts>
         },
         {
-          path:'/dashBoard/allSellers',
+          path:'/dashboard/allSellers',
           element:<AllSellers></AllSellers>
         },
         {
-          path:'/dashBoard/allBuyers',
+          path:'/dashboard/allBuyers',
           element:<AllBuyers></AllBuyers>
         },
+        {
+          path:'/dashboard/payments/:id',
+          element: <Payment></Payment>,
+          loader: ({params}) => fetch(`http://localhost:5000/bookedItem/${params.id}`)
+      },
       ]
     }
   ])
