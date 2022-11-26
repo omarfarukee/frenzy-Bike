@@ -20,6 +20,10 @@ const BikeBorard = () => {
                     {
                          <>
                             <li><Link to='/dashboard/addItem'>Add Item</Link></li>
+                            <li><Link to='/dashboard/allBuyers'>All Buyers</Link></li>
+                            <li><Link to='/dashboard/allSellers'>All Sellers</Link></li>
+                            <li><Link to='/dashboard/myProducts'>My Added Products</Link></li>
+
                             </>
                     }
                 </ul>

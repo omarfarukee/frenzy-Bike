@@ -1,14 +1,16 @@
 import { data } from 'autoprefixer';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../AuthProviuder/AuthProvider';
 
 const AddItems = () => {
+    const {user} = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
     const imageHosKey = '29473dd4ab78ebc95009722bc0558d38';
     console.log(imageHosKey)
-    // const navigate = useNavigate()
+     const navigate = useNavigate()
 
     const handleAddItem = (data) => {
         console.log(data)
@@ -37,11 +39,12 @@ const AddItems = () => {
                 originalPrice: data.originalPrice,
                 location: data.location,
                 condition: data.condition,
-                yearOfUs:data.yearOfUSe,
+                yearOfUse:data.yearOfUse,
                 seller:data.seller,
                 postTime:data.postTime,
                 details: data.details,
-                phone:data.details
+                phone:data.details,
+                email:user?.email
 
             }
 
@@ -61,7 +64,7 @@ const AddItems = () => {
                 
                 console.log(result)
                 toast.success('added Item successfully')
-                // navigate('/dashboard/')
+                 navigate('/dashBoard/myProducts')
             })
 
           }
@@ -81,6 +84,14 @@ const AddItems = () => {
                             required: "Required"
                         })} className="input input-bordered w-full max-w-xs" />
                         {errors.seller && <p className='text-red-500'>{errors.seller.message}</p>}
+                    </div>
+
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label"> <span className="label-text">Seller email</span></label>
+                        <input defaultValue={user?.email} disabled type="email" {...register("email", {
+                            // required: "Required"
+                        })} className="input input-bordered w-full max-w-xs" />
+                        {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
                     </div>
 
                     <div className="form-control w-full max-w-xs">
@@ -125,10 +136,10 @@ const AddItems = () => {
 
                     <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text">Year of use</span></label>
-                        <input type="text" {...register("yearOfUSe", {
+                        <input type="text" {...register("yearOfUse", {
                             required: "Required"
                         })} className="input input-bordered w-full max-w-xs" />
-                        {errors.yearOfUSe && <p className='text-red-500'>{errors.yearOfUSe.message}</p>}
+                        {errors.yearOfUse && <p className='text-red-500'>{errors.yearOfUse.message}</p>}
                     </div>
 
                     <div className="form-control w-full max-w-xs">
@@ -157,7 +168,7 @@ const AddItems = () => {
 
 
                     <div className=''>
-                        <label className="label"> <span className="label-text">Chose Brand Name Id</span></label>
+                        <label className="label"> <span className="label-text">Chose Brand </span></label>
                         <select className="select select-bordered  w-full max-w-xs" {...register("categoryId")}>
                             <option value="637f32adb2c7870c084a397e">yamaha</option>
                             <option value="637f32adb2c7870c084a397f">suzuki</option>
@@ -166,7 +177,7 @@ const AddItems = () => {
                     </div>
 
                     <div className="form-control w-full max-w-xs">
-                        <label className="label"> <span className="label-text">Photo</span></label>
+                        <label className="label"> <span className="label-text">Photo (photo Should be png/jpg format)</span></label>
                         <input type="file" {...register("images", {
                             required: 'Required'
                         })} className="input input-bordered w-full max-w-xs" />

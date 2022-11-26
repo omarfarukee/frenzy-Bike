@@ -13,6 +13,9 @@ import PrivateRoute from './Page/Private/PrivateRoute';
 import BikeBorard from './Layout/BikeBoard/BikeBorard';
 import MyOrder from './Page/MyOrder/MyOrder';
 import AddItems from './Page/AddItems/AddItems';
+import MyProducts from './Page/AddItems/MyProducts/MyProducts';
+import AllSellers from './Layout/BikeBoard/AllSellers/AllSellers';
+import AllBuyers from './Layout/BikeBoard/AllBuyers/AllBuyers';
 function App() {
   const router = createBrowserRouter([
     {
@@ -64,6 +67,18 @@ function App() {
         {
           path:'/dashBoard/addItem',
           element:<AddItems></AddItems>
+        },
+        {
+          path:'/dashBoard/myProducts',
+          element:<MyProducts></MyProducts>
+        },
+        {
+          path:'/dashBoard/allSellers',
+          element:<AllSellers></AllSellers>
+        },
+        {
+          path:'/dashBoard/allBuyers',
+          element:<AllBuyers></AllBuyers>
         },
       ]
     }
