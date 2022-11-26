@@ -5,7 +5,7 @@ import { AuthContext } from '../../AuthProviuder/AuthProvider';
 
 const MyProducts = () => {
     const { user } = useContext(AuthContext);
-    const [reviews, setReviews] = useState([])
+    const [itemsDelete, setItemsDelete] = useState([])
     const url = `http://localhost:5000/dashboard/items?email=${user?.email}`
 
     const { data: products = [], refetch } = useQuery({
@@ -34,8 +34,8 @@ const MyProducts = () => {
                 console.log(data)
                 if(data.deletedCount > 0) {
                     toast.success('Items Deleted Successfully')
-                    const remaining = reviews.filter(rev => rev._id !== id)
-                    setReviews(remaining)
+                    const remaining = itemsDelete.filter(item => item._id !== id)
+                    setItemsDelete(remaining)
                     refetch()
                 }
             })

@@ -40,7 +40,7 @@ console.log(userRole)
                 {userRole === "admin"? 
                         <>  
                             <p className='text-2xl font-bold text-green-900'>Admin Profile</p>
-                            <li><Link to='/dashboard/addItem'>Add Item</Link></li>
+                            {/* <li><Link to='/dashboard/addItem'>Add Item</Link></li> */}
                             <li><Link to='/dashboard/allBuyers'>All Buyers</Link></li>
                             <li><Link to='/dashboard/allSellers'>All Sellers</Link></li>
                         </> 
