@@ -1,0 +1,15 @@
+@media only screen  and (max-width: 687px){
+
+.collection {
+
+    width:94%;
+    margin-left:3%;
+    height:300px;
+}
+.collectionAddCard{
+    width:94%;
+    margin-left:3%;
+    height:290px;
+}
+
+}

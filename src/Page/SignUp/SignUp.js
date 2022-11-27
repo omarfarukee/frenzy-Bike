@@ -19,18 +19,18 @@ const SignUp = () => {
         navigate('/')
     }
 
-    const handleGoogle= () => {
-        signInWithGoogle()
-            .then(result => {
-                const user = result.user;
-                console.log(user);
-                toast.success('User Sign Up SuccessFully')
-                navigate('/home')
-            })
-            .catch(error => {
-                console.log(error.message)
-            });
-    }
+    // const handleGoogle= () => {
+    //     signInWithGoogle()
+    //         .then(result => {
+    //             const user = result.user;
+    //             console.log(user);
+    //             toast.success('User Sign Up SuccessFully')
+    //             navigate('/home')
+    //         })
+    //         .catch(error => {
+    //             console.log(error.message)
+    //         });
+    // }
     const handleSignUp = (data) => {
         setError('');
         signUp(data.email, data.password)
@@ -58,7 +58,7 @@ const SignUp = () => {
 
     const saveUser = (name, email, role) =>{
         const user = {name, email, role};
-        fetch('http://localhost:5000/users', {
+        fetch('https://assignment-12-server-omarfarukee.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -75,7 +75,7 @@ const SignUp = () => {
      }
 
     //  const getUsersToken = (email) => {
-    //     fetch(`http://localhost:5000/jwt?email=${email}`)
+    //     fetch(`https://assignment-12-server-omarfarukee.vercel.app/jwt?email=${email}`)
     //     .then(res => res.json())
     //     .then(data => {
     //         if(data.accessToken){
@@ -119,6 +119,7 @@ const SignUp = () => {
                             <option  value='Select Profile'>Select Profile</option>
                             <option value="buyer">buyer</option>
                             <option value="seller">seller</option>
+                            <option value="admin">admin</option>
                         </select>
                     </div>
                 <input className='btn btn-accent w-full mt-4' value="Sign Up" type="submit" />
@@ -128,8 +129,8 @@ const SignUp = () => {
                   <p>Already have an account ?<Link className='text-blue-500' to='/login'>Please Login</Link></p>
             </div>
           
-            <div className="divider">OR</div>
-            <button onClick={handleGoogle} className='btn btn-outline w-full'>Sign Up With Google</button>
+            {/* <div className="divider">OR</div>
+            <button onClick={handleGoogle} className='btn btn-outline w-full'>Sign Up With Google</button> */}
 
         </div>
     </div>

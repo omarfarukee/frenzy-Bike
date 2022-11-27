@@ -18,6 +18,7 @@ import AllSellers from './Layout/BikeBoard/AllSellers/AllSellers';
 import AllBuyers from './Layout/BikeBoard/AllBuyers/AllBuyers';
 import Greeting from './Layout/BikeBoard/Greeting/Greeting';
 import Payment from './Layout/BikeBoard/Payment/Payment';
+import Report from './Page/Report/Report';
 function App() {
   const router = createBrowserRouter([
     {
@@ -52,7 +53,7 @@ function App() {
         {
             path:'/items/:id',
             element:<PrivateRoute><ItemsOfBike></ItemsOfBike></PrivateRoute>,
-            loader: ({params}) => fetch(`http://localhost:5000/items/${params.id}`)
+            loader: ({params}) => fetch(`https://assignment-12-server-omarfarukee.vercel.app/items/${params.id}`)
         },
 
       
@@ -87,9 +88,13 @@ function App() {
           element:<AllBuyers></AllBuyers>
         },
         {
+          path:'/dashboard/reportAdmin',
+          element:<Report></Report>
+        },
+        {
           path:'/dashboard/payments/:id',
           element: <Payment></Payment>,
-          loader: ({params}) => fetch(`http://localhost:5000/bookedItem/${params.id}`)
+          loader: ({params}) => fetch(`https://assignment-12-server-omarfarukee.vercel.app/bookedItem/${params.id}`)
       },
       ]
     }

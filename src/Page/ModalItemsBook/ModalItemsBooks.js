@@ -24,7 +24,7 @@ const ModalItemsBooks = ({setItemsData, itemsData}) => {
 
         }
 
-        fetch('http://localhost:5000/bookedItem', {
+        fetch('https://assignment-12-server-omarfarukee.vercel.app/bookedItem', {
             method: "POST",
             headers:{
                 'content-type' : 'application/json'

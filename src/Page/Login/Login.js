@@ -7,7 +7,7 @@ import useToken from '../../UserHooks/UseToken';
 const Login = () => {
     const [error, setError] = useState('')
     const { register,formState: { errors }, handleSubmit } = useForm();
-    const {login, signInWithGoogle, user } = useContext(AuthContext)
+    const {login, signInWithGoogle, updateUser } = useContext(AuthContext)
     const [loginUserEmail, setLoginUerEmail] = useState('');
      const [token] = useToken(loginUserEmail);
     const navigate = useNavigate()
@@ -33,20 +33,49 @@ const Login = () => {
             setError(error.message)
           })
     }
+
+
     const handleGoogle= () => {
         signInWithGoogle()
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                toast.success('User Login Successfully')
-                 navigate('/home')
-                //  navigate(from, {replace: true});
+                const userInfo = {
+                    displayName: user.displayName,
+                    email: user.email,
+                }
                
+                updateUser(userInfo)
+                .then(() => {
+                    saveUser(user.displayName, user.email)
+                })
+                .catch(err => console.log(err));
             })
             .catch(error => {
                 console.log(error.message)
             });
     }
+
+
+
+    
+    const saveUser = (name, email) =>{
+        const user = {name, email};
+        fetch('https://assignment-12-server-omarfarukee.vercel.app/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data =>{
+            // console.log('save user',data)
+            setLoginUerEmail(email)
+            // getUsersToken(email)
+         })
+        
+     }
 
     return (
         <div className='h-[800px] flex justify-center items-center'>

@@ -7,7 +7,7 @@ import { AuthContext } from '../../AuthProviuder/AuthProvider';
 const MyProducts = () => {
     const { user } = useContext(AuthContext);
     const [itemsDelete, setItemsDelete] = useState([])
-    const url = `http://localhost:5000/dashboard/items?email=${user?.email}`
+    const url = `https://assignment-12-server-omarfarukee.vercel.app/dashboard/items?email=${user?.email}`
     const navigate = useNavigate()
     const { data: products = [], refetch } = useQuery({
         queryKey: ['dashboard/items', user?.email],
@@ -27,7 +27,7 @@ const MyProducts = () => {
     const handleDelete = id =>{
         const proceed = window.confirm('Are you sure, want to delete this Item?')
         if(proceed){
-            fetch( `http://localhost:5000/dashboard/items/${id}`, {
+            fetch( `https://assignment-12-server-omarfarukee.vercel.app/dashboard/items/${id}`, {
                 method: 'DELETE'
             })
             .then(res => res.json())
@@ -62,7 +62,7 @@ const handleAdds = id => {
            image:adds.images
                      
         }
-        fetch('http://localhost:5000/adds', {
+        fetch('https://assignment-12-server-omarfarukee.vercel.app/adds', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -75,6 +75,7 @@ const handleAdds = id => {
             .then(result => {
                 console.log(result)
                 toast.success('Successfully added in Advertise')
+                window.location.reload()
                 navigate('/')
             })
     }
@@ -109,7 +110,10 @@ const handleAdds = id => {
                                     <th>{product.name}</th>
                                     <th>{product.resalePrice}৳</th>
                                     <th><button onClick={() => handleDelete(product._id)} className='btn btn-danger'>remove</button></th>
-                                    <th><button onClick={() => handleAdds(product._id)} className='btn btn-xs'>Advertise</button></th>
+                                    <th><button disabled={sessionStorage.getItem(`buttonDisable${product._id}` || false)} onClick={() => {
+                                        handleAdds(product._id)
+                                        sessionStorage.setItem(`buttonDisable${product._id}`, true);
+                                    }} className='btn btn-primary'>Adds</button></th>
                                 </tr>
                             )
                         }

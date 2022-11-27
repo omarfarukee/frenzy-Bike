@@ -1,17 +1,19 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../AuthProviuder/AuthProvider';
 
 const MyOrder = () => {
     const { user } = useContext(AuthContext);
-    const url = `http://localhost:5000/bookedItem?email=${user?.email}`
+    console.log(user.email)
+    const url = `https://assignment-12-server-omarfarukee.vercel.app/bookedItem?email=${user?.email}`
 
     const { data: bookedItem = [] } = useQuery({
         queryKey: ['bookedItem', user?.email],
         queryFn: async () => {
 
-            const res = await fetch(url, {
+            const res = await fetch( url, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('usersToken')}`
                 }
@@ -21,7 +23,44 @@ const MyOrder = () => {
         }
     })
 
+    const handleReport = id =>{
+        const proceed = window.confirm('Want To Report this product?')
+        const reportItem = bookedItem.filter(item => item._id === id)
+        const report = reportItem[0]
+        if(proceed){
+            const reportProduct = {
+                resalePrice: report.resalePrice,
+                email: report.email,
+                buyerName: report.buyerName,
+                image: report.image,
+              
+                modelName: report.modelName
+            }
+           // https://assignment-12-server-omarfarukee.vercel.app
+            console.log(reportProduct)
+            fetch('https://assignment-12-server-omarfarukee.vercel.app/report', {
 
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                    authorization: `bearer ${localStorage.getItem('usersToken')}`
+
+                },
+                body: JSON.stringify(reportProduct)
+            })
+                .then(res => res.json())
+                .then(result => {
+                    if (result.acknowledged) {
+                        toast.success('Report successfully')
+                        window.location.reload()
+                    }
+                    else {
+                        toast.error(result.message)
+                    }
+                })
+         }
+
+    }
     return (
         <div>
             <div className='flex justify-center mb-5 mt-5'>
@@ -37,6 +76,7 @@ const MyOrder = () => {
                             <th>Model Name</th>
                             <th>Price</th>
                             <th>Payment Status</th>
+                            <th>Report</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -59,7 +99,10 @@ const MyOrder = () => {
                                     {
                                         booked.price && booked.paid &&  <td><button className='btn btn-primary'>paid</button></td> 
                                     }
-                                  
+                                  <td><button disabled={sessionStorage.getItem(`buttonDisable${booked._id}` || false)} onClick={() => {
+                                        handleReport(booked._id)
+                                        sessionStorage.setItem(`buttonDisable${booked._id}`, true);
+                                    }} className='btn btn-primary'>Report</button></td>
                                 </tr>
                             )
                         }
