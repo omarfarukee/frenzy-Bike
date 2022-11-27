@@ -57,8 +57,9 @@ const handleAdds = id => {
            location: adds.location,
             resalePrice: adds.resalePrice,
            originalPrice: adds.originalPrice,
-             details: adds.details,
+            details: adds.details,
            seller: adds.seller, 
+           image:adds.images
                      
         }
         fetch('http://localhost:5000/adds', {
