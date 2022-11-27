@@ -31,6 +31,19 @@ const AllSellers = () => {
             })
         }
 }
+    
+// const handleVerify = ( email )=> {
+//         fetch(`http://localhost:5000/users?${email}`, {
+//             method: 'PUT'
+//         })
+//         .then(res => res.json())
+//         .then(data => {
+//             if(data.modifiedCount > 0){
+//                 toast.success('verified...')
+//                 refetch()
+//             }
+//         })
+// }       
         return (
             <div>
                 <div className='flex justify-center'>
@@ -45,7 +58,8 @@ const AllSellers = () => {
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Role</th>
-    
+                                <th>Verification</th>
+
                                 <th>Delete</th>
                             </tr>
                         </thead>
@@ -56,13 +70,13 @@ const AllSellers = () => {
                                     <td>{user.name}</td>
                                     <td>{user.email}</td>
                                     <td>{user.role}</td>
-    
-                                    {/* <td>{user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-xs btn-primary'>Make Admin</button>}</td> */}
+                                    {/* <td>{  user?.role !== 'admin' &&  <button onClick={() =>handleVerify(user.email)} className='btn btn-secondary'>Verify</button>}</td> */}
+                                    <td><button className='btn btn-primary'>verify</button></td>
     
                                     <td><  button onClick={() => handleDeleteSellers(user._id)} className='btn btn-xs btn-danger'>Delete</button></td>
                                 </tr>)
                             }
-    
+                                  
                         </tbody>
                     </table>
                 </div>

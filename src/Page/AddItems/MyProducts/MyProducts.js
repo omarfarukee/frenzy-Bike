@@ -1,13 +1,14 @@
 import { useQueries, useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProviuder/AuthProvider';
 
 const MyProducts = () => {
     const { user } = useContext(AuthContext);
     const [itemsDelete, setItemsDelete] = useState([])
     const url = `http://localhost:5000/dashboard/items?email=${user?.email}`
-
+    const navigate = useNavigate()
     const { data: products = [], refetch } = useQuery({
         queryKey: ['dashboard/items', user?.email],
         queryFn: async () => {
@@ -42,6 +43,43 @@ const MyProducts = () => {
         }
 }
 
+const handleAdds = id => {
+    
+    const addsProduct = products.filter(item => item._id === id)
+    const adds = addsProduct[0] 
+    const proceed = window.confirm('Are you want to Advertise this item')
+    if(proceed){
+        const addsProduct = {
+           categoryId:adds.categoryId,   
+           name: adds.name,
+           email: adds.email,
+            used: adds.yearOfUse,
+           location: adds.location,
+            resalePrice: adds.resalePrice,
+           originalPrice: adds.originalPrice,
+             details: adds.details,
+           seller: adds.seller, 
+                     
+        }
+        fetch('http://localhost:5000/adds', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('usersToken')}`
+
+            },
+            body: JSON.stringify(addsProduct)
+        })
+            .then(res => res.json())
+            .then(result => {
+                console.log(result)
+                toast.success('Successfully added in Advertise')
+                navigate('/')
+            })
+    }
+
+}
+
     return (
         <div>
             <div className='flex justify-center mb-5 mt-5'>
@@ -56,7 +94,8 @@ const MyProducts = () => {
                             <th>Product</th>
                             <th>Model Name</th>
                             <th>Price</th>
-                            <th></th>
+                            <th>Delete</th>
+                            <th>Make Adds</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -69,6 +108,7 @@ const MyProducts = () => {
                                     <th>{product.name}</th>
                                     <th>{product.resalePrice}৳</th>
                                     <th><button onClick={() => handleDelete(product._id)} className='btn btn-danger'>remove</button></th>
+                                    <th><button onClick={() => handleAdds(product._id)} className='btn btn-xs'>Advertise</button></th>
                                 </tr>
                             )
                         }
