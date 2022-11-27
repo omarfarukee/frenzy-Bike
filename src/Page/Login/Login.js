@@ -40,7 +40,7 @@ const Login = () => {
                 console.log(user);
                 toast.success('User Login Successfully')
                  navigate('/home')
-                 navigate(from, {replace: true});
+                //  navigate(from, {replace: true});
                
             })
             .catch(error => {

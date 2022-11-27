@@ -91,8 +91,8 @@ const PayFrom = ({ data }) => {
                 .then(data => {
                     console.log(data);
                     if (data?.insertedId) {
-                        toast('thanks for your payment')
-                        setSuccess('Congrats! your payment completed');
+                        toast.success('thanks for your payment')
+                        setSuccess('Congrats! your payment successfully completed');
                         setTransactionId(paymentIntent.id);
                     }
                 })
