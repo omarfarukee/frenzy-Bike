@@ -9,7 +9,7 @@
 - there is three role for users . (admin , seller , buyer)
 - yon can booked item add item delete item 
 - seller make advertise for his items on home page 
-- very comfortable for users. and stunning design .
+- admin can verify any seller and delete.
 
 ## Used : 
 1. HTML
