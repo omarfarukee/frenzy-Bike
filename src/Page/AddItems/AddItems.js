@@ -74,11 +74,11 @@ const AddItems = () => {
     }
     return (
 
-        <div className='pr-5'>
+        <div className='pr-5 mb-5'>
             <div className='flex justify-center text-3xl font-bold'><h1>Add item</h1></div>
             <form onSubmit={handleSubmit(handleAddItem)}>
 
-                <div className='grid grid-cols-2 bg-gray-300 p-5 rounded-2xl '>
+                <div className='lg:grid lg:grid-cols-2 md:grid md:grid-cols-2 bg-gray-300 p-5 rounded-2xl ml-3'>
 
                     <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text">Seller Name</span></label>
@@ -187,7 +187,10 @@ const AddItems = () => {
                     </div>
 
                 </div>
-                <input className='btn btn-primary w-full mt-4' value="Sign Up" type="submit" />
+                <div className='flex justify-center'>
+                     <input className='btn btn-primary  mt-4 ' value="Sign Up" type="submit" />
+                </div>
+               
             </form>
         </div>
     );

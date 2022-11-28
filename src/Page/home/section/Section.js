@@ -9,7 +9,7 @@ const Section = () => {
                 </div>
                 <div>
                     <h1 className='text-2xl'>listen!</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing  elit. Sapiente voluptates facere voluptatem molestiae culpa modi possimus ducimus porro adipisci sunt ipsum, dolorem, soluta necessitatibus eligendi sit impedit fugiat, consequatur animi.</p>
+                    <p>Reduces head injuries: In case you have an accident while riding your two–wheeler, a helmet can absorb the impact of a head injury. Head or brain injuries can be fatal, especially if you are not wearing a helmet and have left yourself exposed</p>
                 </div>
             </div>
 

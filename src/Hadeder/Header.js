@@ -16,7 +16,7 @@ const {user, logOut} = useContext(AuthContext)
     <p className='mt-3 font-bold'>{user?.email ? user.displayName : 'user not login'}</p>
 
     <li><Link to='/home'>home</Link></li>
-    <li><Link to='/category'>Category</Link></li>
+    {/* <li><Link to='/category'>Category</Link></li> */}
    {user?.uid ?<li><Link to='/dashboard'>DashBoard</Link></li>: <></> } 
     <li><Link to='/blog'>Blog</Link></li>
     {user?.uid ? <button className='btn btn-warning' onClick={handleLogOut}>logout</button>

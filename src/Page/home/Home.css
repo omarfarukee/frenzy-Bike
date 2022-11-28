@@ -18,63 +18,11 @@
         height: 100%;
     }
     .text-t{
-        font-size:20px;
+        font-size:15px;
         text-align:center;
     }
     .text-p{
-        font-size:12px;
-    }
-   
-    .reg-btn{
-        display:none;
-    }
-    .log-btn{
-        margin-bottom: 5px;
-    }
-    .log-out{
-        width:50px;
-        font-size:10px;
+        display: none;
     }
 
-    /* for section One */
-    .sec-pic{
-        width: 96%;
-        margin-left:10px;
-    }
-    .sec-p{
-        margin-top:40px;
-        width: 95%;
-        margin-left:10px;
-        margin-right:5px;
-    }
-    .card-food{
-        width:95%;
-    }
-    /* home.js */
-    .h-img{
-        height:45px;
-        margin-top:8px;
-    }
-    .h-food{
-        font-size:12px;
-        margin-right:10px;
-        margin-top:10px;
-    }
-    .h-u-img{
-        height:35px;
-        border-radius: 50%;
-    }
-
-    /*  viewAllfood.js */
-    .viewFood{
-        width: 100%;
-    }
-    /* viewCard.js */
-    .n-card{
-        width:95%;
-    }
-
-    .sec2-img{
-        margin-right:30px;
-    }
 }
