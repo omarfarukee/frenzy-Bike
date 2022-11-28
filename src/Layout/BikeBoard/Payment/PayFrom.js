@@ -13,7 +13,7 @@ const PayFrom = ({ data }) => {
      const { price, email, buyerName, _id } = data;
     console.log(clientSecret)
     useEffect(() => {
-        fetch("https://assignment-12-server-omarfarukee.vercel.app/create-payment-intent", {
+        fetch("http://localhost:5000/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -79,7 +79,7 @@ const PayFrom = ({ data }) => {
                 email,
                 bookingId: _id
             }
-            fetch('https://assignment-12-server-omarfarukee.vercel.app/payments', {
+            fetch('http://localhost:5000/payments', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',

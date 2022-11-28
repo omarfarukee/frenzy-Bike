@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { AuthContext } from '../AuthProviuder/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useToken from '../../UserHooks/UseToken';
+import { FcGoogle } from 'react-icons/fc';
 const Login = () => {
     const [error, setError] = useState('')
     const { register,formState: { errors }, handleSubmit } = useForm();
@@ -61,7 +62,7 @@ const Login = () => {
     
     const saveUser = (name, email) =>{
         const user = {name, email};
-        fetch('https://assignment-12-server-omarfarukee.vercel.app/users', {
+        fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -110,7 +111,7 @@ const Login = () => {
                     </div>
                  
                    <div className="divider">OR</div>
-                   <button onClick={handleGoogle} className='btn btn-primary w-full'>Login Google</button>
+                   <button onClick={handleGoogle} className='btn btn-primary w-full'> <span className='pr-2'><FcGoogle></FcGoogle></span>Login With Google</button>
                 </form>
             </div>
         </div>

@@ -51,7 +51,7 @@ const AddItems = () => {
             }
 
           
-            fetch('https://assignment-12-server-omarfarukee.vercel.app/items', {
+            fetch('http://localhost:5000/items', {
 
                 method: 'POST', 
                 headers: {

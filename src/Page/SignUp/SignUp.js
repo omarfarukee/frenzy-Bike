@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../AuthProviuder/AuthProvider';
 import { signInWithPopup } from 'firebase/auth';
+import {  FaUserCheck } from 'react-icons/fa';
 import useToken from '../../UserHooks/UseToken';
 
 const SignUp = () => {
@@ -58,7 +59,7 @@ const SignUp = () => {
 
     const saveUser = (name, email, role) =>{
         const user = {name, email, role};
-        fetch('https://assignment-12-server-omarfarukee.vercel.app/users', {
+        fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -75,7 +76,7 @@ const SignUp = () => {
      }
 
     //  const getUsersToken = (email) => {
-    //     fetch(`https://assignment-12-server-omarfarukee.vercel.app/jwt?email=${email}`)
+    //     fetch(`http://localhost:5000/jwt?email=${email}`)
     //     .then(res => res.json())
     //     .then(data => {
     //         if(data.accessToken){
@@ -119,14 +120,14 @@ const SignUp = () => {
                             <option  value='Select Profile'>Select Profile</option>
                             <option value="buyer">buyer</option>
                             <option value="seller">seller</option>
-                            <option value="admin">admin</option>
+                            {/* <option value="admin">admin</option> */}
                         </select>
                     </div>
-                <input className='btn btn-accent w-full mt-4' value="Sign Up" type="submit" />
+                <input className='btn btn-accent w-full mt-4' value="Sign Up" type="submit" /> 
                 {error && <p className='text-red-600'>{error}</p>}
             </form>
             <div className='flex justify-center'>
-                  <p>Already have an account ?<Link className='text-blue-500' to='/login'>Please Login</Link></p>
+                  <p>Already have an account ?<Link className='text-blue-500' to='/login'>Please Login </Link></p>
             </div>
           
             {/* <div className="divider">OR</div>

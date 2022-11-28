@@ -6,7 +6,7 @@ const AddsItem = () => {
 
     const [adds, setAdds] = useState([])
     useEffect(() =>{
-        axios.get('https://assignment-12-server-omarfarukee.vercel.app/adds')
+        axios.get('http://localhost:5000/adds')
         .then(data => setAdds(data.data))
     } ,[])
     return (

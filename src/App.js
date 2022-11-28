@@ -53,7 +53,9 @@ function App() {
         {
             path:'/items/:id',
             element:<PrivateRoute><ItemsOfBike></ItemsOfBike></PrivateRoute>,
-            loader: ({params}) => fetch(`https://assignment-12-server-omarfarukee.vercel.app/items/${params.id}`)
+            loader:async ({params}) =>{
+          return fetch(`http://localhost:5000/items/${params.id}`)
+            }
         },
 
       
@@ -94,7 +96,7 @@ function App() {
         {
           path:'/dashboard/payments/:id',
           element: <Payment></Payment>,
-          loader: ({params}) => fetch(`https://assignment-12-server-omarfarukee.vercel.app/bookedItem/${params.id}`)
+          loader: ({params}) => fetch(`http://localhost:5000/bookedItem/${params.id}`)
       },
       ]
     }

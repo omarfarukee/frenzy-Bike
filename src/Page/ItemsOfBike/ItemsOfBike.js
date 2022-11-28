@@ -14,7 +14,7 @@ const ItemsOfBike = () => {
             </div>
             <div className='grid lg:grid-cols-4 gap-4 md:grid-cols-2 p-5'>
                 {
-                    detailsOfItemsCard.map(itemsCard => <CardOfItemBike
+                    detailsOfItemsCard?.map(itemsCard => <CardOfItemBike
                         key={itemsCard._id}
                         itemsCard={itemsCard}
                         setItemsData={setItemsData}

@@ -23,9 +23,9 @@ const ModalItemsBooks = ({setItemsData, itemsData}) => {
             price: resalePrice,
 
         }
-
-        fetch('https://assignment-12-server-omarfarukee.vercel.app/bookedItem', {
-            method: "POST",
+            //  https://assignment-12-server-omarfarukee.vercel.app
+        fetch('http://localhost:5000/bookedItem', {
+            method: 'POST',
             headers:{
                 'content-type' : 'application/json'
             }, 
@@ -35,11 +35,14 @@ const ModalItemsBooks = ({setItemsData, itemsData}) => {
         .then(data => {
             console.log(data)
             if (data.acknowledged === true) {
-                setItemsData(null)
+            // if (data.acknowledged !== true) {
+               setItemsData(null)
+                // setItemsData([])
                 toast.success('booking confirmed')
             }
              else {
-                alert('you have already booked')
+                // alert()
+                toast.error(data.message)
              }
         })
 

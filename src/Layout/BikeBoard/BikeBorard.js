@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 import { AuthContext } from '../../Page/AuthProviuder/AuthProvider';
 const BikeBorard = () => {
     const {user} = useContext(AuthContext)
-    const url = `https://assignment-12-server-omarfarukee.vercel.app/users?email=${user?.email}`
+    const url = `http://localhost:5000/users?email=${user?.email}`
 
     const { data: roleOfUsers = {}, refetch } = useQuery({
         queryKey: ['users', user?.email],
@@ -33,7 +33,17 @@ const BikeBorard = () => {
             <div className="drawer-content">
                 <Outlet></Outlet>
             </div>
-            <div className="drawer-side">
+            {
+                user?.emailVerified  ?  
+                
+                <div className='drawer-side font-bold'>
+                <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
+                <ul className="menu p-4 w-80  text-white">
+                <li className='text-2xl font-bold text-green-900 mb-10 ml-3'>Buyer Profile</li>
+                <li className='rounded-lg  hover:bg-sky-700  bg-slate-400 mb-2'><Link to="/dashboard/myProducts">My Orders</Link></li>
+                </ul>
+            </div>
+                : <div className="drawer-side">
                 <label htmlFor="bikeBoard-drawer" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80 bg-base-100 text-base-content">
 
@@ -69,6 +79,7 @@ const BikeBorard = () => {
 
                 </ul>
             </div>
+            }
         </div>
 
     </div>

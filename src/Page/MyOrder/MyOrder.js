@@ -7,7 +7,7 @@ import { AuthContext } from '../AuthProviuder/AuthProvider';
 const MyOrder = () => {
     const { user } = useContext(AuthContext);
     console.log(user.email)
-    const url = `https://assignment-12-server-omarfarukee.vercel.app/bookedItem?email=${user?.email}`
+    const url = `http://localhost:5000/bookedItem?email=${user?.email}`
 
     const { data: bookedItem = [] } = useQuery({
         queryKey: ['bookedItem', user?.email],
@@ -38,7 +38,7 @@ const MyOrder = () => {
             }
            // https://assignment-12-server-omarfarukee.vercel.app
             console.log(reportProduct)
-            fetch('https://assignment-12-server-omarfarukee.vercel.app/report', {
+            fetch('http://localhost:5000/report', {
 
                 method: 'POST',
                 headers: {

@@ -1,13 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
-
+import { FaCheckCircle } from 'react-icons/fa';
 const AllSellers = () => {
     const [seller, setSeller] = useState([])
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch(`https://assignment-12-server-omarfarukee.vercel.app/users/allSellers`);
+            const res = await fetch(`http://localhost:5000/users/allSellers`);
             const data = await res.json();
             return data;
         }
@@ -16,7 +16,7 @@ const AllSellers = () => {
     const handleDeleteSellers = id =>{
         const proceed = window.confirm('Are you sure, want to delete this Seller?')
         if(proceed){
-            fetch( `https://assignment-12-server-omarfarukee.vercel.app/users/allSellers/${id}`, {
+            fetch( `http://localhost:5000/users/allSellers/${id}`, {
                 method: 'DELETE'
             })
             .then(res => res.json())
@@ -32,18 +32,25 @@ const AllSellers = () => {
         }
 }
     
-// const handleVerify = ( email )=> {
-//         fetch(`https://assignment-12-server-omarfarukee.vercel.app/users?${email}`, {
-//             method: 'PUT'
-//         })
-//         .then(res => res.json())
-//         .then(data => {
-//             if(data.modifiedCount > 0){
-//                 toast.success('verified...')
-//                 refetch()
-//             }
-//         })
-// }       
+
+const handleMakeAdminVerify = id => {
+    fetch(`http://localhost:5000/users/admin/${id}`, {
+        method: 'PUT', 
+        headers: {
+            authorization: `bearer ${localStorage.getItem('usersToken')}`
+        }
+    })
+    .then(res => res.json())
+    .then(data => {
+        if(data.modifiedCount > 0){
+            toast.success('account verified successfully')
+            refetch();
+        }
+    })
+}
+
+
+     
         return (
             <div>
                 <div className='flex justify-center'>
@@ -68,12 +75,27 @@ const AllSellers = () => {
                                 users.map((user, i) => <tr key={user._id}>
                                     <th>{i + 1}</th>
                                     <td>{user.name}</td>
-                                    <td>{user.email}</td>
-                                    <td>{user.role}</td>
+                                    <td>
+                                    {
+                                         user?.status === 'verified' ? 
+
+                                    <div className='flex'>
+                                          {user.email}<span className='text-green-400'><FaCheckCircle></FaCheckCircle></span>
+                                    </div> :
+
+                                     <>  {user.email}</>
+                                        
+                                    }   
+                                    </td>
+                                    <td> {user.role}</td>
                                     {/* <td>{  user?.role !== 'admin' &&  <button onClick={() =>handleVerify(user.email)} className='btn btn-secondary'>Verify</button>}</td> */}
-                                    <td><button className='btn btn-primary'>verify</button></td>
+                                    <td>{
+                                        user?.status !== 'verified' ? 
+                                        <button onClick={() => handleMakeAdminVerify(user._id)} className='btn btn-primary'>verify</button> :
+                                        <button className='btn btn-info'>verified</button>
+                                        }</td>
     
-                                    <td><  button onClick={() => handleDeleteSellers(user._id)} className='btn btn-xs btn-danger'>Delete</button></td>
+                                    <td><  button onClick={() => handleDeleteSellers(user._id)} className='btn btn-xs btn-error'>Delete</button></td>
                                 </tr>)
                             }
                                   

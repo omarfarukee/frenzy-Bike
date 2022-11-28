@@ -5,7 +5,7 @@ import { AuthContext } from '../../../Page/AuthProviuder/AuthProvider';
 const Greeting = () => {
     
     const {user} = useContext(AuthContext)
-    const url = `https://assignment-12-server-omarfarukee.vercel.app/users?email=${user?.email}`
+    const url = `http://localhost:5000/users?email=${user?.email}`
 
     const { data: roleOfUsers = {}, } = useQuery({
         queryKey: ['users', user?.email],
@@ -30,7 +30,7 @@ const Greeting = () => {
                 <div>
                     <h1 className='text-3xl'> Welcome <span className='font-extrabold text-green-700'>'{user?.displayName}'</span> 
                     <br /> 
-                    You are <span className='font-bold text-green-700'>'{userRole}'</span>on this site</h1>
+                    You are <span className='font-bold text-green-700'>' {userRole || 'buyer'}'</span>on this site</h1>
                 </div>
             </div>
         </div>

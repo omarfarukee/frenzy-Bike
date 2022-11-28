@@ -8,7 +8,7 @@ const Report = () => {
     const { data: reportedItem = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('https://assignment-12-server-omarfarukee.vercel.app/reportByAdmin');
+            const res = await fetch('http://localhost:5000/reportByAdmin');
             const data = await res.json();
             return data;
         }
@@ -16,10 +16,10 @@ const Report = () => {
     console.log(reportedItem)
 
     const handleDelete = id => {
-        const proceed = window.confirm('Want To Delete, Think Again?')
+        const proceed = window.confirm('are you sure for delete this ?')
    //    https://assignment-12-server-omarfarukee.vercel.app
         if (proceed) {
-            fetch(`https://assignment-12-server-omarfarukee.vercel.app/dashboard/reportAdmin/${id}`, {
+            fetch(`http://localhost:5000/dashboard/reportAdmin/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -37,7 +37,10 @@ const Report = () => {
     return (
 
         <div>
-            <h3 className="text-3xl mb-5 font-bold">Reported Product</h3>
+
+            <div className='flex justify-center mb-6 mt-3'>
+                 <h1 className="text-3xl mb-5 font-bold">Reported Items</h1>
+            </div>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
@@ -46,7 +49,7 @@ const Report = () => {
                              <th>Buyer</th>
                             <th>Photo</th>
                             <th>Product Name</th>
-                            <th>Price</th>
+                            <th>email</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
@@ -56,18 +59,19 @@ const Report = () => {
                             reportedItem?.map((item, index) => <tr key={item._id}>
 
                                 <th>{index + 1}</th>
+                                <td>{item.buyerName}</td>
                                 <td>
                                     <div className="avatar">
                                         <div className="w-24 rounded-full">
                                             <img src={item.image} alt="" />
                                         </div>
                                     </div></td>
-                                <td>{item.buyer}</td>
-                                <td>{item.productName}</td>
-                                <td>{item.resalePrice}</td>
+                                
+                                <td>{item.modelName}</td>
+                        
                                 <td>{item.email}</td>
 
-                                <td><button onClick={() => handleDelete(item._id)} className='btn btn-warning'>Delete</button></td>
+                                <td><button onClick={() => handleDelete(item._id)} className='btn btn-error'>Delete</button></td>
                             </tr>)
                         }
                     </tbody>

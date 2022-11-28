@@ -7,7 +7,7 @@ import { AuthContext } from '../../AuthProviuder/AuthProvider';
 const MyProducts = () => {
     const { user } = useContext(AuthContext);
     const [itemsDelete, setItemsDelete] = useState([])
-    const url = `https://assignment-12-server-omarfarukee.vercel.app/dashboard/items?email=${user?.email}`
+    const url = `http://localhost:5000/dashboard/items?email=${user?.email}`
     const navigate = useNavigate()
     const { data: products = [], refetch } = useQuery({
         queryKey: ['dashboard/items', user?.email],
@@ -25,9 +25,9 @@ const MyProducts = () => {
     // console.log(myProducts)
 
     const handleDelete = id =>{
-        const proceed = window.confirm('Are you sure, want to delete this Item?')
+        const proceed = window.confirm('Are you sure, want to remove this Item?')
         if(proceed){
-            fetch( `https://assignment-12-server-omarfarukee.vercel.app/dashboard/items/${id}`, {
+            fetch( `http://localhost:5000/dashboard/items/${id}`, {
                 method: 'DELETE'
             })
             .then(res => res.json())
@@ -62,7 +62,7 @@ const handleAdds = id => {
            image:adds.images
                      
         }
-        fetch('https://assignment-12-server-omarfarukee.vercel.app/adds', {
+        fetch('http://localhost:5000/adds', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -96,8 +96,8 @@ const handleAdds = id => {
                             <th>Product</th>
                             <th>Model Name</th>
                             <th>Price</th>
-                            <th>Delete</th>
-                            <th>Make Adds</th>
+                            <th>Remove</th>
+                            <th>Make Advertise</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -113,7 +113,7 @@ const handleAdds = id => {
                                     <th><button disabled={sessionStorage.getItem(`buttonDisable${product._id}` || false)} onClick={() => {
                                         handleAdds(product._id)
                                         sessionStorage.setItem(`buttonDisable${product._id}`, true);
-                                    }} className='btn btn-primary'>Adds</button></th>
+                                    }} className='btn btn-sm'>make Advertise</button></th>
                                 </tr>
                             )
                         }
