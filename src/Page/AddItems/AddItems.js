@@ -1,5 +1,5 @@
 import { data } from 'autoprefixer';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +7,10 @@ import { AuthContext } from '../AuthProviuder/AuthProvider';
 
 const AddItems = () => {
     const {user} = useContext(AuthContext)
+
+    const [sellerInfo, setSellerInfo] = useState([])
+    const [sellerStatus, setSellerStatus] = useState('')
+
     const { register, handleSubmit, formState: { errors } } = useForm();
     // const imageHosKey = '29473dd4ab78ebc95009722bc0558d38';
     const imageHosKey= process.env.REACT_APP_imgbb_key
@@ -46,6 +50,7 @@ const AddItems = () => {
                 postTime:data.postTime,
                 details: data.details,
                 location: data.location,
+                status : sellerStatus
               
 
             }
@@ -65,6 +70,7 @@ const AddItems = () => {
             .then(result => {
                 
                 console.log(result)
+                alert('its can take few moment please wait')
                 toast.success('added Item successfully')
                  navigate('/dashBoard/myProducts')
             })
@@ -72,6 +78,19 @@ const AddItems = () => {
           }
         })
     }
+    useEffect(() => {
+        fetch('https://assignment-12-server-murex.vercel.app/users/allSellers')
+            .then(res => res.json())
+            .then(data => {
+                setSellerInfo(data)
+                const array = sellerInfo.filter(dt => dt.email === user.email)
+                const sellerData = array[0];
+                console.log(array)
+                console.log(sellerData)
+                setSellerStatus(sellerData.status)
+            })
+    }, [user?.email,sellerInfo])
+    console.log(sellerStatus)
     return (
 
         <div className='pr-5 mb-5'>
@@ -170,7 +189,7 @@ const AddItems = () => {
 
 
                     <div className=''>
-                        <label className="label"> <span className="label-text">Chose Brand </span></label>
+                        <label className="label"> <span className="label-text">Choose Brand </span></label>
                         <select className="select select-bordered  w-full max-w-xs" {...register("categoryId")}>
                             <option value="637f32adb2c7870c084a397e">yamaha</option>
                             <option value="637f32adb2c7870c084a397f">suzuki</option>
@@ -185,7 +204,20 @@ const AddItems = () => {
                         })} className="input input-bordered w-full max-w-xs" />
                         {errors.images && <p className='text-red-500'>{errors.images.message}</p>}
                     </div>
+                    <div className="form-control w-full max-w-xs">
+                            <label className="label"> <span className="label-text">status</span></label>
+                            {
+                                sellerStatus ?
+                                    <input defaultValue={sellerStatus} disabled type="text" {...register("status", {
 
+                                    })} className="input input-bordered w-full max-w-xs" />
+                                    :
+                                    <input defaultValue={''} disabled type="text" {...register("status", {
+                                        // required: "Required"
+                                    })} className="input input-bordered w-full max-w-xs" />
+                            }
+                            {errors.status && <p className='text-red-500'>{errors.status.message}</p>}
+                        </div>
                 </div>
                 <div className='flex justify-center'>
                      <input className='btn btn-success  mt-4 ' value="add this" type="submit" />

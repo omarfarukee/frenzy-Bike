@@ -12,7 +12,7 @@ const AddsItem = () => {
     } ,[])
 
     const handleDeleteAdds = id =>{
-      const proceed = window.confirm('Are you sure, want to delete this Buyer?')
+      const proceed = window.confirm('Are you sure, want to delete this Adds?')
       if(proceed){
           fetch( `https://assignment-12-server-murex.vercel.app/adds/${id}`, {
               method: 'DELETE'
@@ -21,7 +21,7 @@ const AddsItem = () => {
           .then(data => {
               console.log(data)
               if(data.deletedCount > 0) {
-                  toast.success('Buyer Deleted Successfully')
+                  toast.success('adds Deleted Successfully')
                   const remaining = adds.filter(add => add._id !== id)
                   setAdds(remaining)
                   window.location.reload()
