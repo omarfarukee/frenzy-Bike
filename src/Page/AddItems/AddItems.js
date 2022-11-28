@@ -188,7 +188,7 @@ const AddItems = () => {
 
                 </div>
                 <div className='flex justify-center'>
-                     <input className='btn btn-primary  mt-4 ' value="Sign Up" type="submit" />
+                     <input className='btn btn-success  mt-4 ' value="add this" type="submit" />
                 </div>
                
             </form>
