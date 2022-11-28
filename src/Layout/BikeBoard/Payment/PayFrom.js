@@ -13,7 +13,7 @@ const PayFrom = ({ data }) => {
      const { price, email, buyerName, _id } = data;
     console.log(clientSecret)
     useEffect(() => {
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://assignment-12-server-murex.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -79,7 +79,7 @@ const PayFrom = ({ data }) => {
                 email,
                 bookingId: _id
             }
-            fetch('http://localhost:5000/payments', {
+            fetch('https://assignment-12-server-murex.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -92,7 +92,7 @@ const PayFrom = ({ data }) => {
                     console.log(data);
                     if (data?.insertedId) {
                         toast.success('thanks for your payment')
-                        setSuccess('Congrats! your payment successfully completed');
+                        setSuccess('Yea! your payment success-full');
                         setTransactionId(paymentIntent.id);
                     }
                 })

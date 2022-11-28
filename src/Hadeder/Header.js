@@ -13,7 +13,7 @@ const {user, logOut} = useContext(AuthContext)
     navigate('/')
   }
   const berItem = <React.Fragment>
-    <p className='mt-3 font-bold'>{user?.email ? user.displayName : 'user not login'}</p>
+    <p className='mt-3 font-bold'>{user?.email ?<>User: '{user.displayName}'</>  : 'user not login'}</p>
 
     <li><Link to='/home'>home</Link></li>
     {/* <li><Link to='/category'>Category</Link></li> */}

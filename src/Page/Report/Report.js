@@ -8,7 +8,7 @@ const Report = () => {
     const { data: reportedItem = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/reportByAdmin');
+            const res = await fetch('https://assignment-12-server-murex.vercel.app/reportByAdmin');
             const data = await res.json();
             return data;
         }
@@ -19,7 +19,7 @@ const Report = () => {
         const proceed = window.confirm('are you sure for delete this ?')
    //    https://assignment-12-server-omarfarukee.vercel.app
         if (proceed) {
-            fetch(`http://localhost:5000/dashboard/reportAdmin/${id}`, {
+            fetch(`https://assignment-12-server-murex.vercel.app/dashboard/reportAdmin/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

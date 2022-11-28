@@ -17,7 +17,7 @@ const Payment = () => {
         <div className='ml-10 lg:flex'>
         <div className='mt-10'>
             <h3 className="text-3xl mb-5 font-bold">My Payments</h3>
-            <p className="text-3xl">Please pay <strong>{price} Taka</strong> for the <strong>{modelName}</strong> product</p>
+            <p className="text-3xl">Pay <strong>{price}৳</strong> for the <strong>{modelName}</strong> </p>
             <div className='w-96 my-6'>
                 <Elements stripe={stripePromise}>
                     

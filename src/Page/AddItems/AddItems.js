@@ -51,7 +51,7 @@ const AddItems = () => {
             }
 
           
-            fetch('http://localhost:5000/items', {
+            fetch('https://assignment-12-server-murex.vercel.app/items', {
 
                 method: 'POST', 
                 headers: {

@@ -59,7 +59,7 @@ const SignUp = () => {
 
     const saveUser = (name, email, role) =>{
         const user = {name, email, role};
-        fetch('http://localhost:5000/users', {
+        fetch('https://assignment-12-server-murex.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -76,7 +76,7 @@ const SignUp = () => {
      }
 
     //  const getUsersToken = (email) => {
-    //     fetch(`http://localhost:5000/jwt?email=${email}`)
+    //     fetch(`https://assignment-12-server-murex.vercel.app/jwt?email=${email}`)
     //     .then(res => res.json())
     //     .then(data => {
     //         if(data.accessToken){

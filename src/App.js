@@ -54,7 +54,7 @@ function App() {
             path:'/items/:id',
             element:<PrivateRoute><ItemsOfBike></ItemsOfBike></PrivateRoute>,
             loader:async ({params}) =>{
-          return fetch(`http://localhost:5000/items/${params.id}`)
+          return fetch(`https://assignment-12-server-murex.vercel.app/items/${params.id}`)
             }
         },
 
@@ -96,7 +96,7 @@ function App() {
         {
           path:'/dashboard/payments/:id',
           element: <Payment></Payment>,
-          loader: ({params}) => fetch(`http://localhost:5000/bookedItem/${params.id}`)
+          loader: ({params}) => fetch(`https://assignment-12-server-murex.vercel.app/bookedItem/${params.id}`)
       },
       ]
     }

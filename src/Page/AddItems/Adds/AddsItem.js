@@ -7,14 +7,14 @@ const AddsItem = () => {
 
     const [adds, setAdds] = useState([])
     useEffect(() =>{
-        axios.get('http://localhost:5000/adds')
+        axios.get('https://assignment-12-server-murex.vercel.app/adds')
         .then(data => setAdds(data.data))
     } ,[])
 
     const handleDeleteAdds = id =>{
       const proceed = window.confirm('Are you sure, want to delete this Buyer?')
       if(proceed){
-          fetch( `http://localhost:5000/adds/${id}`, {
+          fetch( `https://assignment-12-server-murex.vercel.app/adds/${id}`, {
               method: 'DELETE'
           })
           .then(res => res.json())
@@ -29,6 +29,7 @@ const AddsItem = () => {
           })
       }
 }
+   if(adds.length !== 0){
     return (
         <div>
             <div className='flex justify-center'>
@@ -60,6 +61,7 @@ const AddsItem = () => {
             </div>
         </div>
     );
+   }
 };
 
 export default AddsItem; 

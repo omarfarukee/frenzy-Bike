@@ -7,7 +7,7 @@ const AllSellers = () => {
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/users/allSellers`);
+            const res = await fetch(`https://assignment-12-server-murex.vercel.app/users/allSellers`);
             const data = await res.json();
             return data;
         }
@@ -16,7 +16,7 @@ const AllSellers = () => {
     const handleDeleteSellers = id =>{
         const proceed = window.confirm('Are you sure, want to delete this Seller?')
         if(proceed){
-            fetch( `http://localhost:5000/users/allSellers/${id}`, {
+            fetch( `https://assignment-12-server-murex.vercel.app/users/allSellers/${id}`, {
                 method: 'DELETE'
             })
             .then(res => res.json())
@@ -34,7 +34,7 @@ const AllSellers = () => {
     
 
 const handleMakeAdminVerify = id => {
-    fetch(`http://localhost:5000/users/admin/${id}`, {
+    fetch(`https://assignment-12-server-murex.vercel.app/users/admin/${id}`, {
         method: 'PUT', 
         headers: {
             authorization: `bearer ${localStorage.getItem('usersToken')}`

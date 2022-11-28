@@ -7,7 +7,7 @@ import { AuthContext } from '../../AuthProviuder/AuthProvider';
 const MyProducts = () => {
     const { user } = useContext(AuthContext);
     const [itemsDelete, setItemsDelete] = useState([])
-    const url = `http://localhost:5000/dashboard/items?email=${user?.email}`
+    const url = `https://assignment-12-server-murex.vercel.app/dashboard/items?email=${user?.email}`
     const navigate = useNavigate()
     const { data: products = [], refetch } = useQuery({
         queryKey: ['dashboard/items', user?.email],
@@ -27,7 +27,7 @@ const MyProducts = () => {
     const handleDelete = id =>{
         const proceed = window.confirm('Are you sure, want to remove this Item?')
         if(proceed){
-            fetch( `http://localhost:5000/dashboard/items/${id}`, {
+            fetch( `https://assignment-12-server-murex.vercel.app/dashboard/items/${id}`, {
                 method: 'DELETE'
             })
             .then(res => res.json())
@@ -62,7 +62,7 @@ const handleAdds = id => {
            image:adds.images
                      
         }
-        fetch('http://localhost:5000/adds', {
+        fetch('https://assignment-12-server-murex.vercel.app/adds', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

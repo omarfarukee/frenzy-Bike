@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 import { AuthContext } from '../../Page/AuthProviuder/AuthProvider';
 const BikeBorard = () => {
     const {user} = useContext(AuthContext)
-    const url = `http://localhost:5000/users?email=${user?.email}`
+    const url = `https://assignment-12-server-murex.vercel.app/users?email=${user?.email}`
 
     const { data: roleOfUsers = {}, refetch } = useQuery({
         queryKey: ['users', user?.email],
@@ -60,7 +60,7 @@ const BikeBorard = () => {
                 } 
                 {userRole === 'seller' ?
                 <>
-                    <p className='text-2xl font-bold text-green-900 b-5 ml-3'>Seller Profile</p>
+                    <p className='text-2xl font-bold text-green-900 mb-5 ml-3'>Seller Profile</p>
                     <li className='bg-green-700 hover:bg-green-500 rounded-2xl mb-3 text-white font-bold'><Link to='/dashboard/addItem'>Add Item</Link></li>
                     <li className='bg-green-700 hover:bg-green-500 rounded-2xl mb-3 text-white font-bold'><Link to='/dashboard/myProducts'>My Added Products</Link></li>
                 </>
@@ -70,7 +70,7 @@ const BikeBorard = () => {
                 {userRole === "buyer" ?
 
                         <>
-                            <p className='text-2xl font-bold text-green-900 b-5 ml-3 mb-5'>Buyer Profile</p>
+                            <p className='text-2xl font-bold text-green-900 mb-5 ml-3'>Buyer Profile</p>
                             <li className='bg-green-700 hover:bg-green-500 rounded-2xl mb-3 text-white font-bold'><Link to='/dashboard/myOrder'>My Ordered Items</Link></li>
                          </>
                         : 

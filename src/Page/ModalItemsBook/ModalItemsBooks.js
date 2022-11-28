@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../AuthProviuder/AuthProvider';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 const ModalItemsBooks = ({setItemsData, itemsData}) => {
     const {name, resalePrice, images } = itemsData
     const {user} = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const handleBooking = event =>{
         event.preventDefault()
@@ -24,7 +26,7 @@ const ModalItemsBooks = ({setItemsData, itemsData}) => {
 
         }
             //  https://assignment-12-server-omarfarukee.vercel.app
-        fetch('http://localhost:5000/bookedItem', {
+        fetch('https://assignment-12-server-murex.vercel.app/bookedItem', {
             method: 'POST',
             headers:{
                 'content-type' : 'application/json'
@@ -39,6 +41,7 @@ const ModalItemsBooks = ({setItemsData, itemsData}) => {
                setItemsData(null)
                 // setItemsData([])
                 toast.success('booking confirmed')
+                navigate('/dashboard/myOrder')
             }
              else {
                 // alert()
@@ -62,7 +65,7 @@ const ModalItemsBooks = ({setItemsData, itemsData}) => {
                         <input name='email' defaultValue={user?.email} disabled type="email" placeholder="email" className=" mt-3 input input-bordered w-full " required /> <br />
                         <input name='phone' type="text" placeholder="phone" className=" mt-3 input input-bordered w-full " required /> <br />
                         <input name='location' type="text" placeholder="Location" className=" mt-3 input input-bordered w-full " required /> <br />
-                        <button className="btn btn-primary mt-3 w-full">Button</button>
+                        <button className="btn btn-primary mt-3 w-full">Submit</button>
                     </form>
                 </div>
             </div>
